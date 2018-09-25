@@ -1,0 +1,247 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin:0px;
+}
+
+body {
+    width:100%;
+    height:100vh;
+    display:grid;
+    grid-template-rows: 45px 150px auto 1fr;
+    font-family: Arial, Verdana, SansSerif;
+}
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #000;
+    }
+
+        header .hamburger, header .phone {
+            font-size:20px;
+        }
+
+        header .sitetitle {
+            text-transform: uppercase;
+            font-weight:bold;
+            font-size:16px;
+            line-height:45px;
+        }
+
+            header .sitetitle .name {
+                display:none;
+            }
+
+    .hero {
+        background: url("images/hero.jpg");
+        background-size: cover;
+    }
+
+    .award {
+        border-bottom:3px dotted #bbb;
+    }
+
+        .award img {
+            width: 100%;
+        }
+
+    .maintext {
+        padding:20px 20px 10px 20px;
+        line-height: 25px;
+        font-size:12px
+    }
+
+        .maintext h2 {
+            margin:5px 0px;
+        }
+
+    .images {
+        display: flex;
+        justify-content: space-between;
+        max-height: 100px;
+        align-items: start;
+        padding:0px 20px
+    }
+
+        .images img {
+            width:30%;
+            max-height:75px
+        }
+
+    .maps img {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .footer {
+        background: #333;
+        color: #ccc;
+        font-size:13px;
+        line-height:24px;
+        display: flex;
+        flex-wrap: wrap;
+        width:100%;
+        padding: 10px 0px;
+    }
+
+        .footer .footer_block {
+            width:50%;
+            padding:0px 20px;
+        }
+
+            .footer .footer_block ul {
+                list-style: none;
+                padding:0px
+            }
+
+            .footer .footer_block h3 {
+                margin: 5px 0px 0px;
+            }
+
+            .footer .footer_block .fab {
+                font-size: 25px;
+                margin-right: 10px;
+            }
+
+    .disclaimer {
+        background: #aaa;
+        padding: 10px;
+        text-align: center;
+        font-size:12px;
+    }
+
+        .disclaimer a {
+            text-decoration: none;
+            color: #333;
+        }
+
+    .show-tablet {
+        display:none;
+    }
+
+@media (min-width: 600px) and (max-width: 767px) {
+
+    header .sitetitle .name {
+        display:inline;
+    }
+
+    .award {
+        text-align: center;
+        border:none;
+    }
+
+        .award img {
+            width: auto;
+            border:2px dotted #bbb;
+            border-top: 0px;
+        }
+
+    .maintext h2 {
+        text-align: center;
+    }
+
+    .images {
+        max-height: 125px;
+    }
+
+        .images img {
+            max-height:125px
+        }
+
+    .footer .footer_block {
+        width:33.3333%;
+        padding:0px 20px;
+    }
+
+    .show-tablet {
+        display:block;
+    }
+
+    .hide-tablet {
+        display:none;
+    }
+}
+
+
+@media (min-width: 768px) {
+
+    body {
+        grid-template-rows: 45px 300px auto 1fr;
+    }
+
+    header .sitetitle .name {
+        display:inline;
+    }
+
+    header .phone span {
+        display:none;
+    }
+
+    .maincontent {
+        display: grid;
+        grid-template-columns: 1fr 300px [col-start];
+        grid-template-rows: 1fr [col-start];
+        grid-template-areas:
+                "left-top right"
+                "left-main right";
+    }
+
+    .award {
+        grid-area: left-top;
+        padding:20px 20px 0px;
+        border:none;
+    }
+
+    .award img {
+        border:2px dotted #bbb;
+    }
+
+    .maintext {
+        grid-area: left-main;
+    }
+
+    .maintext h2 {
+        text-align: center;
+    }
+
+    .images {
+        grid-area: right;
+        flex-wrap: wrap;
+        padding-top: 20px
+    }
+
+    .images img {
+        width:47%;
+        margin-bottom:9px;
+    }
+
+    .footer .footer_block {
+        width:25%;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+}
+
+
+@media (min-width: 1024px) {
+
+    .maincontent {
+        width:1000px;
+        margin: auto;
+    }
+
+    .footer {
+        justify-content: center;
+    }
+
+    .footer .footer_block {
+        width: 250px;
+    }
+
+}
