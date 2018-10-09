@@ -1,3 +1,4 @@
+
 <html>
 <head>
     <title>De Kaasspeciaalzaak - Ed Boele</title>
@@ -8,8 +9,16 @@
 
 <body>
     <header>
-        <button class="hamburger"><span class="fa fa-bars"></span></button>
         <div class="sitetitle">Kaasspeciaalzaak <span class="name">Ed Boele</span> </div>
+        <nav>
+            <button class="hamburger menutoggle"><span class="fa fa-bars"></span></button>
+            <ul class="inactive" id="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Wie zijn wij</a></li>
+                <li><a href="#">Onze winkel</a></li>
+                <li><a href="#">Over kaas</a></li>
+            </ul>
+        </nav>
         <button class="phone"><span class="fa fa-phone"></span></button>
     </header>
     <div class="hero"></div>
@@ -27,6 +36,16 @@
                 tegen te zeggen. Een overvloed aan Nederlandse en buitenlandse heerlijkheden. En elke
                 kaas heeft z'n eigen verhaal. Een verhaal dat wij u graag doorvertellen. Want wij hebben
                 er kaas van gegeten.</p>
+            <h2>Ed Boele</h2>
+            <p>Opgegroeid in plattelandssfeer aan de rand van Zoetermeer. Daar werd al de kiem gelegd voor
+                zijn liefde voor boerenkaas. Behaalde het vakdiploma zuivelproducten in Den Haag en leerde
+                tijdens deze studie de kaasbranche kennen als verkoper in een Zoetermeerse kaaswinkel.</p>
+
+            <p>Tijdens z’n beroepsopleiding maakte hij kennis met Maria, met wie hij later trouwde en hun
+                kinderen Fleur en Jasper grootbracht. Na z’n militaire diensttijd bij de geneeskundige
+                troepen haalde Ed het middenstandsdiploma, ging werken in een kaaszaak te Rotterdam,
+                verdiepte zich ook in wijnen en vestigde zich in 1993 als kaaswinkelier in de Haagse
+                Fahrenheitstraat.</p>
         </div>
 
         <div class="images">
@@ -35,7 +54,25 @@
             <img src="images/inside.jpg" />
         </div>
     </div>
-    <div class="maps">
+    <div class="blogs">
+        <h3>Onze blog</h3>
+        <div class="blogscontent">
+            <div class="blogpost">
+                <div class="img"><img src="images/blogimage.jpg"></div>
+                <h4>Proeverij vrijdag 1 juni</h4>
+                <div class="content">Jong, belegen, oud en overjarig. Rauwmelks en gepasteuriseerd. Iedere kaasliefhebber kent die basistermen wel. Maar er gaat een wereld achter schuil. Van ...</div>
+                <div class="read_more"><a href="#">Lees meer</a></div>
+            </div>
+
+            <div class="blogpost">
+                <div class="img"><img src="images/verrassingen.jpg"></div>
+                <h4>Hollandse verrassingen</h4>
+                <div class="content">Speciaal ter gelegenheid van Pasen presenteren we een aantal spectaculaire schimmelkazen die op Nederlandse bodem zijn gemaakt, maar volstrekt on-Nederlands smaken...</div>
+                <div class="read_more"><a href="#">Lees meer</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="maps" id="map">
         <img src="images/maps.png" />
     </div>
     <div class="footer">
@@ -85,5 +122,12 @@
         &#183;
         <a href="#">Over cookies</a>
     </div>
+
+    <script src="gmaps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbqme7CBElPffCeGbGOqkb7w5wC4oBQZI&callback=initMap"></script>
+
+    <script src="scripts.js" type="text/javascript"></script>
+
+
 </body>
 </html>

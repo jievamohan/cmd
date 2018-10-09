@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree');
+
 * {
     box-sizing: border-box;
+}
+
+:focus {
+    display: none;
 }
 
 html, body {
@@ -10,7 +16,7 @@ body {
     width:100%;
     height:100vh;
     display:grid;
-    grid-template-rows: 45px 150px auto 1fr;
+    grid-template-rows: auto 150px 1fr 400px auto;
     font-family: Arial, Verdana, SansSerif;
 }
 
@@ -20,20 +26,70 @@ body {
         border-bottom: 1px solid #000;
     }
 
+        header .hamburger {
+            order: 1;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+        }
+
         header .hamburger, header .phone {
             font-size:20px;
         }
+
+        header nav ul {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            width:100%;
+            position: absolute;
+            overflow:hidden;
+            transition: max-height 2s;
+        }
+
+            header nav ul.inactive {
+                max-height: 0px;
+            }
+
+            header nav ul.active {
+                max-height:400px;
+            }
+
+            header nav ul li {
+                width:100%;
+            }
+        
+                header nav ul li a {
+                    text-decoration: none;
+                    padding: 10px 20px;
+                    display: block;
+                    background: #888;
+                    color: #fff;
+                    border-top:1px solid #cccccc;
+                    border-bottom: 1px solid #333;
+                }
 
         header .sitetitle {
             text-transform: uppercase;
             font-weight:bold;
             font-size:16px;
             line-height:45px;
+            order: 2;
+
         }
 
             header .sitetitle .name {
                 display:none;
             }
+
+        header .phone {
+            order: 3;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+        }
 
     .hero {
         background: url("images/hero.jpg");
@@ -61,15 +117,20 @@ body {
     .images {
         display: flex;
         justify-content: space-between;
-        max-height: 100px;
+        flex-wrap: wrap;
         align-items: start;
-        padding:0px 20px
+        padding:0px 20px;
+        width:100%;
     }
 
         .images img {
-            width:30%;
-            max-height:75px
+            width:100%;
+            margin-bottom: 20px;
         }
+
+    .blogs {
+        display: none;
+    }
 
     .maps img {
         margin-top: 20px;
@@ -143,14 +204,6 @@ body {
         text-align: center;
     }
 
-    .images {
-        max-height: 125px;
-    }
-
-        .images img {
-            max-height:125px
-        }
-
     .footer .footer_block {
         width:33.3333%;
         padding:0px 20px;
@@ -169,21 +222,88 @@ body {
 @media (min-width: 768px) {
 
     body {
-        grid-template-rows: 45px 300px auto 1fr;
+        grid-template-rows: 400px 1fr;
+        grid-template-areas:
+                "top"
+                "main"
+                "blogs"
+                "maps"
+                "footer"
+                "disclaimer";
     }
 
-    header .sitetitle .name {
-        display:inline;
+    header {
+        grid-area: top;
+        z-index: 2;
+        height: 100%;
+        border-bottom: initial;
     }
 
-    header .phone span {
-        display:none;
+        header .sitetitle {
+            order: 1;
+            padding-top:7px;
+            padding-left: 7px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+            header .sitetitle .name {
+                display:inline;
+            }
+
+        header nav {
+            order: 2;
+        }
+
+            header nav ul {
+                display: flex;
+                list-style:none;
+            }
+
+                header nav ul.inactive {
+                    max-height:initial;
+                    position:initial;
+                }
+
+                    header nav ul li  {
+                        width: auto;
+                        padding: 7px 7px 7px 0px;
+                    }
+
+                    header nav ul li a {
+                        display: initial;
+                        background: none;
+                        text-decoration: none;
+                        padding:7px 0px 7px 35px;
+                        font-weight: 500;
+                        color: #fff;
+                        font-size: 16px;
+                        font-family: 'Bai Jamjuree', sans-serif;
+                        text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+                    }
+
+        header .phone, header .hamburger {
+            display:none;
+        }
+
+    .hero {
+        grid-area: top;
     }
+
+        .hero:before {
+            grid-area: top;
+            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+            content: ' ';
+            width:100%;
+            height:150px;
+            display: block;
+        }
 
     .maincontent {
+        grid-area: main;
         display: grid;
-        grid-template-columns: 1fr 300px [col-start];
-        grid-template-rows: 1fr [col-start];
+        grid-template-columns: 1fr 215px [col-start];
+        grid-template-rows: 185px [col-start] 1fr;
         grid-template-areas:
                 "left-top right"
                 "left-main right";
@@ -201,6 +321,7 @@ body {
 
     .maintext {
         grid-area: left-main;
+        padding-top: 0px;
     }
 
     .maintext h2 {
@@ -209,35 +330,119 @@ body {
 
     .images {
         grid-area: right;
-        flex-wrap: wrap;
-        padding-top: 20px
+        padding-top: 20px;
+        padding-right: 0px;
+        text-align: right;
+        max-height: initial;
+        align-content: flex-start;
     }
 
     .images img {
-        width:47%;
+        width:100%;
         margin-bottom:9px;
+        max-height: initial;
+    }
+
+    .blogs {
+        display: block;
+        grid-area: blogs;
+        padding: 0px 20px 50px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+        .blogs h3 {
+            width: 100%;
+        }
+
+        .blogs .blogscontent {
+            display: flex;
+            justify-content: space-between;
+        }
+
+    .blogpost {
+        width: 49%;
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        grid-template-rows: 30px 1fr 15px;
+        grid-template-areas:
+                "img title"
+                "img content"
+                "img readmore";
+    }
+
+        .blogpost .img {
+            grid-area: img;
+            width: 100%;
+            height: 150px;
+            overflow:hidden;
+        }
+
+            .blogpost .img img {
+                width:100%;
+            }
+
+        .blogpost h4 {
+            grid-area: title;
+            margin:0px;
+            padding-left: 15px;
+        }
+
+        .blogpost .content {
+            grid-area: content;
+            padding-left: 15px;
+            line-height: 19px;
+            font-size: 12px;
+        }
+
+        .blogpost .read_more {
+            grid-area: readmore;
+            text-align: right;
+        }
+
+            .blogpost .read_more a {
+                font-size: 12px;
+            }
+
+    .maps {
+        grid-area: maps;
+        height: 450px;
+    }
+
+
+    .footer {
+        grid-area: footer;
+        justify-content: center;
     }
 
     .footer .footer_block {
         width:25%;
     }
 
+    .disclaimer {
+        grid-area: disclaimer;
+    }
+
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-
+    .images {
+        padding-right: 20px;
+    }
 }
 
 
 @media (min-width: 1024px) {
 
-    .maincontent {
+    header {
         width:1000px;
-        margin: auto;
+        margin:auto;
     }
 
-    .footer {
-        justify-content: center;
+    .maincontent {
+        width:1000px;
+        margin: 0px auto;
+        align-self: flex-start;
     }
 
     .footer .footer_block {
